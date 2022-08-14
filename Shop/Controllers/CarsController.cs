@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shop.Data.Interfaces;
+using Shop.Data.Models;
+using Shop.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +11,50 @@ namespace Shop.Controllers
 {
     public class CarsController:Controller
     {
-        private readonly IAllCars allCars;
-        private readonly ICarsCategory carsCategory;
+        private readonly IAllCars _allCars;
+        private readonly ICarsCategory _carsCategory;
 
         public CarsController(IAllCars iallcars,ICarsCategory icarscategory)
         {
-            allCars = iallcars;
-            carsCategory = icarscategory;
+            _allCars = iallcars;
+            _carsCategory = icarscategory;
         }
-        [Route("")]
-        [Route("Cars")]
+
         [Route("Cars/ListView")]
-        public ViewResult ListView()
+        [Route("Cars/ListView/{category}")]
+        public ViewResult ListView(string category)
         {
-            var cars = allCars.Cars;
-            return View(cars);
+            string _category = category;
+            IEnumerable<Car> cars = null;
+            string carCategory = "";
+            if (string.IsNullOrEmpty(category))
+            {
+                cars = _allCars.Cars.OrderBy(i => i.id);
+            }
+            else
+            {
+                if (string.Equals("electro", category, StringComparison.OrdinalIgnoreCase))
+                {
+                    cars = _allCars.Cars.Where(i => i.Category.categoryName.Equals("Электромобили")).OrderBy(i => i.id);
+                    carCategory = "Электромобили";
+                }
+                else if (string.Equals("fuel", category, StringComparison.OrdinalIgnoreCase))
+                {
+                    cars = _allCars.Cars.Where(i => i.Category.categoryName.Equals("Классические автомобили")).OrderBy(i => i.id);
+                    carCategory = "Классические автомобили";
+                }
+            }
+            var carobj = new CarsListViewModel
+            {
+                allcars = cars,
+                carCaregory = carCategory
+            };
+
+            ViewBag.Title = "Страница с автомобилями";
+            //CarsListViewModel carsListViewModel = new();
+            //carsListViewModel.allcars = _allCars.Cars;
+            //carsListViewModel.carCaregory = "All cars";
+            return View(carobj);
         }
 
     }

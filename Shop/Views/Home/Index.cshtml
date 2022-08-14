@@ -1,0 +1,18 @@
+﻿@model HomeViewModel
+@{ Layout = "_Layout";}
+
+<h2>Лучшие автомобили</h2>
+<div class="container">
+    <div class="row ">
+        @{
+            foreach (Car car in Model.farcars)
+            {
+                @Html.Partial("AllCars", car)
+            }
+        }
+    </div>
+</div>
+
+<script src="~/js/bootstrap.min.js"></script>
+
+

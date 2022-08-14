@@ -1,25 +1,15 @@
-﻿@using Shop.Data.Models
-@model IEnumerable<Car>
-<!DOCTYPE html>
+﻿@{
+    Layout = "_Layout";
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-</head>
-<body>
-    <h1>Все автомобили</h1>
+<h2>Все автомобили</h2>
+<h3>@Model.carCaregory</h3>
+<div class="row mt-5 mb-2">
     @{
-        foreach(var car in Model)
-            {
-                <h3> Модель:  @car.name  </h3>
-                <p> Рисунок:  @car.img           
-                   Цена : @car.price.ToString("C") </p>
-                
-            }
-     }
-    <div>
-        @RenderBody()
-    </div>
-</body>
-</html>
+        foreach (Car car in Model.allcars)
+        {
+         @Html.Partial("AllCars",car)
+        }
+    }
+</div>
+
