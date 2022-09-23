@@ -60,7 +60,17 @@ namespace Shop.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> EditPost(int id, Car car)
+        public async Task<IActionResult> EditPost(int id)
+        {
+            var car = await _appDbContext.Cars.FindAsync(id);
+            //if (car == null)
+            //{
+            //    return NotFound();
+            //}
+            return View(car);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditPost(int id,Car car)
         {
             if (id != car.id)
             {
@@ -74,8 +84,9 @@ namespace Shop.Controllers
             {
                 try
                 {
-                    await _appDbContext.SaveChangesAsync();
-                   return RedirectToAction(nameof(EditPost));
+                    _appDbContext.Update(carupdate);
+                      await _appDbContext.SaveChangesAsync();
+                   return RedirectToAction(nameof(ListView));
                 }
                 catch (DbUpdateException )
                 {
