@@ -5,11 +5,12 @@
 <h2>Все автомобили</h2>
 <h3>@Model.carCaregory</h3>
 <div class="row mt-5 mb-2">
-    @{
-        foreach (Car car in Model.allcars)
-        {
-         @Html.Partial("AllCars",car)
+   
+        @{
+            foreach (Car car in Model.allcars)
+            {
+                @Html.Partial("AllCars", car)
+            }
         }
-    }
 </div>
 

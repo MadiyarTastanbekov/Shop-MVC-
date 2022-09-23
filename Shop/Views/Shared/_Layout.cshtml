@@ -3,46 +3,25 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @*<link href="~/css/bootstrap.min.css.map" rel="stylesheet" type="text/css" />*@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="~/css/Style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <header class="p-3 text-bg-dark">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
                 </a>
-                @*<div class="row">
-                    <div class="col-lg-3"><a href="/" class="nav-link px-2 text-secondary">Home</a></div>
-                    <div class="col-lg-3"><a href="#" class="nav-link px-2 text-white">Features</a></div>
-                    <div class="col-lg-3 "><a href="/ShopCart/" class="nav-link px-2 text-white">ShopCart</a></div>
-
-                </div>*@
             <ul class="nav nav-pills" role="tablist">
                 <li><a asp-controller="Home" asp-action="Index">Главная</a></li>
                 <li><a href="/Cars/ListView">Машины</a></li>
                 <li><a href="/Cars/ListView/electro">Электро</a></li>
                 <li><a href="/Cars/ListView/fuel">Бензиновые</a></li>
                 <li><a href="/ShopCart/">Корзина</a></li>
-              
             </ul>
-                @*<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-                    <li><a href="/ShopCart/" class="nav-link px-2 text-white">ShopCart</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-                </ul>*@
-
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                    <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
-                </form>
-
-                <div class="text-end">
-                    <button type="button" class="btn btn-outline-light me-2">Login</button>
-                    <button type="button" class="btn btn-warning">Sign-up</button>
-                </div>
+            <p>
+                <a asp-action="Create" asp-controller="Cars">Create New</a>
+            </p>
             </div>
      </div>
     </header>
@@ -56,6 +35,5 @@
             <span class="mb-3 mb-md-0 text-muted">© 2022 Shop Store</span>
         </div>
     </footer>
-    <script src="~/js/bootstrap.min.js"></script>
 </body>
 </html>

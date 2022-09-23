@@ -4,12 +4,14 @@
 <h2>Лучшие автомобили</h2>
 <div class="container">
     <div class="row ">
-        @{
-            foreach (Car car in Model.farcars)
-            {
-                @Html.Partial("AllCars", car)
+            @{
+                foreach (Car car in Model.farcars)
+                {
+
+                    @Html.Partial("AllCars", car)
+
+                }
             }
-        }
     </div>
 </div>
 

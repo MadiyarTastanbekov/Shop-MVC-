@@ -12,8 +12,10 @@ namespace Shop.Data
     {
         public static void Initial(AppDbContext appDbContext)
         {
-            if (!appDbContext.Categories.Any())
-                appDbContext.Categories.AddRange(Categoriess.Select(c => c.Value));
+            try { 
+            appDbContext.Database.EnsureCreated();
+            //  if (!appDbContext.Categories.Any())
+            //     appDbContext.Categories.AddRange(Categoriess.Select(c => c.Value));
             if (!appDbContext.Cars.Any())
             {
                 appDbContext.AddRange(
@@ -94,10 +96,14 @@ namespace Shop.Data
                          iavailable = true,
                          Category = Categoriess["Классические автомобили"]
                      }
-                              
+
                     );
             }
-            appDbContext.SaveChanges();
+            appDbContext.SaveChanges(); }
+            catch (Exception ex)
+            {
+
+            }
 
         }
         private static Dictionary<string, Category> diccategory;

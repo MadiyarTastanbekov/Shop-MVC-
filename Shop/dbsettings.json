@@ -1,5 +1,5 @@
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Server=(localdb)\\MSSQLLocalDB;Database=Shop;Trusted_Connection=True;MultipleActiveResultSets=True"
+    "DefaultConnection": "Data Source=ASYLBEK\\TESTDB;Initial Catalog=CarShop;Integrated Security=True"
   }
 }

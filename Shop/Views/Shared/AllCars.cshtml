@@ -1,8 +1,14 @@
 ﻿@model Car
 <div class="col-lg-4">
-    <img class="thumbnail" src="@Model.img" width="300" height="200" />
+    <a asp-action="Details" asp-controller="Cars" asp-route-id="@Model.id">
+        <img class="thumbnail" src="@Model.img" width="300" height="200" />
+    </a>
     <h3> Модель:  @Model.name  </h3>
-    <p>@Model.shortDesc</p>
+    <p class="demo-1">@Model.shortDesc</p>
     <p>Цена : @Model.price.ToString("C")</p>
+    <a asp-action="EditPost" asp-controller="Cars" asp-route-id="@Model.id">Edit</a>
+    <a asp-action="Delete" asp-controller="Cars" asp-route-id="@Model.id">Delete</a>
     <p><a class="btn btn-warning" asp-controller="ShopCart" asp-action="addToCartRedirec" asp-route-id="@Model.id">Добавить в корзину</a></p>
 </div>
+
+<link href="~/css/style all cars.css" rel="stylesheet" />

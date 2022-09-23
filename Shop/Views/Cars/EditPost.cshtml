@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "_Layout";
+}
+@model Car
+<h1>Edit</h1>
+<a asp-action="ListView" asp-controller="Cars">Back to List</a>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditPost" asp-controller="Cars">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="name" class="control-label">Название машины</label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="price" class="control-label">Цена</label>
+                <input asp-for="price" class="form-control" />
+                <span asp-validation-for="price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="shortDesc" class="control-label"> Краткое описание</label>
+                <input asp-for="shortDesc" class="form-control" />
+                <span asp-validation-for="shortDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <input type="submit" value="Save"  />
+            </div>
+        </form>
+    </div>
+</div>

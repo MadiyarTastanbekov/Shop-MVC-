@@ -32,8 +32,9 @@ namespace Shop.Data.Models
         {
            
             appDbContext.ShopCartItems.Add(new ShopCartItem { 
+               
                 ShopCartId = ShopCartId, 
-                Car = car, 
+                Car= car, 
                 price = (int)car.price });
             appDbContext.SaveChanges();
         }
