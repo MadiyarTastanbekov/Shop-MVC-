@@ -45,7 +45,7 @@ namespace Shop.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("price")
-                        .HasColumnType("decimal(20,0)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("shortDesc")
                         .HasColumnType("nvarchar(max)");
@@ -83,19 +83,32 @@ namespace Shop.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("adress")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("email")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<DateTime>("orderTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("phone")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
 
                     b.Property<string>("surname")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.HasKey("id");
 
@@ -115,8 +128,8 @@ namespace Shop.Migrations
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
-                    b.Property<long>("price")
-                        .HasColumnType("bigint");
+                    b.Property<decimal>("price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("id");
 
@@ -140,8 +153,8 @@ namespace Shop.Migrations
                     b.Property<string>("ShopCartId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("price")
-                        .HasColumnType("int");
+                    b.Property<decimal>("price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 

@@ -23,5 +23,22 @@ namespace Shop.Controllers
 
             return View();
         }
+        [HttpPost]
+        public IActionResult Checkout(Order order)
+        {
+            shopCart.ListShopItems = shopCart.GetShopItem();
+            
+            if (ModelState.IsValid)
+            {
+                allOrders.CreateOrder(order);
+                return RedirectToAction("Complete");
+            }
+            return View(order);
+        }
+        public IActionResult Complete()
+        {
+            ViewBag.Messsage = "Заказ успешно отработан";
+            return View();
+        }
     }
 }

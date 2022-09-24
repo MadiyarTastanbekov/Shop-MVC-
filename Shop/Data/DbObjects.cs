@@ -14,9 +14,9 @@ namespace Shop.Data
         {
             try { 
             appDbContext.Database.EnsureCreated();
-            //  if (!appDbContext.Categories.Any())
-            //     appDbContext.Categories.AddRange(Categoriess.Select(c => c.Value));
-            if (!appDbContext.Cars.Any())
+                if (!appDbContext.Categories.Any())
+                    appDbContext.Categories.AddRange(Categoriess.Select(c => c.Value));
+                if (!appDbContext.Cars.Any())
             {
                 appDbContext.AddRange(
                      new Car

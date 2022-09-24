@@ -20,9 +20,8 @@ namespace Shop.Controllers
         }
         public ViewResult Index()
         {
-            var items = _shopCart.GetShopItem();
-            _shopCart.ListShopItems = items;
-            var obj = new ShopCartViewModel { ShopCart = _shopCart };
+            _shopCart.ListShopItems = _shopCart.GetShopItem();
+            ShopCartViewModel obj = new ShopCartViewModel { ShopCart = _shopCart };
             return View(obj);
         }
         public RedirectToActionResult addToCartRedirec(int id)

@@ -4,15 +4,17 @@
 @model Car
 <h1>Create new</h1>
 
-<div class="row">
+<div class="row" >
     <div class="col-md-4">
-        <form asp-action="Create" asp-controller="Cars">
+        <form asp-action="Create" asp-controller="Cars" role="form">
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="name" class="control-label"></label>
+                <label asp-for="name" class="control-label">Название машины</label>
                 <input asp-for="name" class="form-control" />
                 <span asp-validation-for="name" class="text-danger"></span>
             </div>
+            
             <div class="form-group">
                 <label asp-for="shortDesc" class="control-label"></label>
                 <input asp-for="shortDesc" class="form-control" />
@@ -46,6 +48,7 @@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
+
         </form>
     </div>
 </div>

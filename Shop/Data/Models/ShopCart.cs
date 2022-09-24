@@ -35,13 +35,22 @@ namespace Shop.Data.Models
                
                 ShopCartId = ShopCartId, 
                 Car= car, 
-                price = (int)car.price });
+                price = car.price });
             appDbContext.SaveChanges();
         }
 
         public List<ShopCartItem> GetShopItem()
         {
-            return appDbContext.ShopCartItems.Where(c => c.ShopCartId == ShopCartId).Include(s => s.Car).ToList();
+            List<ShopCartItem> shopcart = new();
+            try
+            {
+                shopcart = appDbContext.ShopCartItems.Where(c => c.ShopCartId == ShopCartId).Include(s => s.Car).ToList();
+            }
+            catch(Exception e)
+            {
+
+            }
+            return shopcart;
         }
         
     }
